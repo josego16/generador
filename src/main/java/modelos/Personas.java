@@ -14,13 +14,13 @@ public class Personas {
     private List<String> nombres_hombre;
     private List<String> nombres_mujer;
     private List<String> apellidos;
-    private Direcciones direcciones;
+    private List<Direccion> direcciones;
 
     public Personas() {
         personas = new ArrayList<>();
     }
 
-    public Personas(List<Persona> personas, List<String> nombres_hombre, List<String> nombres_mujer, List<String> apellidos, Direcciones direcciones) {
+    public Personas(List<Persona> personas, List<String> nombres_hombre, List<String> nombres_mujer, List<String> apellidos, List<Direccion> direcciones) {
         this.personas = personas;
         this.nombres_hombre = nombres_hombre;
         this.nombres_mujer = nombres_mujer;
@@ -60,14 +60,6 @@ public class Personas {
         this.apellidos = apellidos;
     }
 
-    public Direcciones getDirecciones() {
-        return direcciones;
-    }
-
-    public void setDirecciones(Direcciones direcciones) {
-        this.direcciones = direcciones;
-    }
-
     public void load(
             String nombre_mujer_filename,
             String nombre_hombre_filename,
@@ -81,8 +73,7 @@ public class Personas {
                     Paths.get(nombre_mujer_filename), StandardCharsets.UTF_8);
             this.apellidos = Files.readAllLines(
                     Paths.get(apellidos_filename), StandardCharsets.UTF_8);
-            this.direcciones = new Direcciones();
-            this.direcciones.load(localidades_filename, calles_filename);
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -1,6 +1,7 @@
 package modelos;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Persona {
     private String nombre;
@@ -8,13 +9,13 @@ public class Persona {
     private String apellido2;
     private String dni;
     private LocalDate fdn;
-    private Direcciones direcciones;
+    private List<Direccion> direcciones;
 
 
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido1, String apellido2, String dni, LocalDate fdn, Direcciones direcciones) {
+    public Persona(String nombre, String apellido1, String apellido2, String dni, LocalDate fdn, List<Direccion> direcciones) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -63,11 +64,11 @@ public class Persona {
         this.fdn = fdn;
     }
 
-    public Direcciones getDirecciones() {
-        return this.direcciones;
+    public List<Direccion> getDirecciones() {
+        return direcciones;
     }
 
-    public void setDirecciones(Direcciones direcciones) {
+    public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
     }
 
@@ -93,11 +94,6 @@ public class Persona {
 
     public Persona fdn(LocalDate fdn) {
         setFdn(fdn);
-        return this;
-    }
-
-    public Persona direcciones(Direcciones direcciones) {
-        setDirecciones(direcciones);
         return this;
     }
 
