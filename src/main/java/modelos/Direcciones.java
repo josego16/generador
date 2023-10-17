@@ -1,5 +1,6 @@
 package modelos;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -7,16 +8,22 @@ import java.util.List;
 import java.util.Random;
 
 public class Direcciones {
-
     private List<Direccion> direcciones;
+
     private Localidades localidades;
     private List<String> calles;
 
     public Direcciones() {
+        direcciones = new ArrayList<>();
     }
 
     public Direcciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
+    }
+
+    public void add(Direccion dir) {
+        direcciones.add(dir);
+
     }
 
     public void load(
@@ -27,7 +34,7 @@ public class Direcciones {
             this.calles = Files.readAllLines(Paths.get(calles_filename));
             this.localidades = new Localidades();
             localidades.load(localidades_filename);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
