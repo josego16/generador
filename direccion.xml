@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<direccion>
+    <calle>Calle travesia vinias</calle>
+    <numero>15</numero>
+    <localidad>
+        <poblacion>Jaen</poblacion>
+        <cp>23340</cp>
+        <provincia>Arroyo del Ojanco</provincia>
+    </localidad>
+</direccion>
