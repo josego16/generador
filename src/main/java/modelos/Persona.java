@@ -11,7 +11,6 @@ public class Persona {
     private LocalDate fdn;
     private List<Direccion> direcciones;
 
-
     public Persona() {
     }
 
@@ -64,13 +63,15 @@ public class Persona {
         this.fdn = fdn;
     }
 
+
     public List<Direccion> getDirecciones() {
-        return direcciones;
+        return this.direcciones;
     }
 
     public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
     }
+
 
     public Persona nombre(String nombre) {
         setNombre(nombre);

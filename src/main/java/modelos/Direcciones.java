@@ -1,6 +1,5 @@
 package modelos;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -8,22 +7,21 @@ import java.util.List;
 import java.util.Random;
 
 public class Direcciones {
-    private List<Direccion> direcciones;
 
+    private List<Direccion> direcciones;
     private Localidades localidades;
     private List<String> calles;
 
     public Direcciones() {
-        direcciones = new ArrayList<>();
+        direcciones = new ArrayList<Direccion>();
     }
 
     public Direcciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
     }
 
-    public void add(Direccion dir) {
-        direcciones.add(dir);
-
+    public void add(Direccion d) {
+        direcciones.add(d);
     }
 
     public void load(
@@ -34,7 +32,7 @@ public class Direcciones {
             this.calles = Files.readAllLines(Paths.get(calles_filename));
             this.localidades = new Localidades();
             localidades.load(localidades_filename);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -42,7 +40,7 @@ public class Direcciones {
     public void generate(int cuantas) {
         if (this.calles != null && this.localidades != null) {
 
-            this.direcciones = new ArrayList<>();
+            this.direcciones = new ArrayList<Direccion>();
             List<Localidad> locs = this.localidades.getLocalidades();
             Random rand = new Random();
 
@@ -75,8 +73,11 @@ public class Direcciones {
         return this;
     }
 
+
     @Override
     public String toString() {
-        return "{" + " direcciones='" + getDirecciones() + "'" + "}";
+        return "{" +
+                " direcciones='" + getDirecciones() + "'" +
+                "}";
     }
 }

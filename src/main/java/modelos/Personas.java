@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Personas {
@@ -14,13 +13,14 @@ public class Personas {
     private List<String> nombres_hombre;
     private List<String> nombres_mujer;
     private List<String> apellidos;
-    private List<Direccion> direcciones;
+    private Direcciones direcciones;
+
 
     public Personas() {
-        personas = new ArrayList<>();
+        personas = new ArrayList<Persona>();
     }
 
-    public Personas(List<Persona> personas, List<String> nombres_hombre, List<String> nombres_mujer, List<String> apellidos, List<Direccion> direcciones) {
+    public Personas(List<Persona> personas, List<String> nombres_hombre, List<String> nombres_mujer, List<String> apellidos, Direcciones direcciones) {
         this.personas = personas;
         this.nombres_hombre = nombres_hombre;
         this.nombres_mujer = nombres_mujer;
@@ -29,7 +29,7 @@ public class Personas {
     }
 
     public List<Persona> getPersonas() {
-        return personas;
+        return this.personas;
     }
 
     public void setPersonas(List<Persona> personas) {
@@ -37,7 +37,7 @@ public class Personas {
     }
 
     public List<String> getNombres_hombre() {
-        return nombres_hombre;
+        return this.nombres_hombre;
     }
 
     public void setNombres_hombre(List<String> nombres_hombre) {
@@ -45,7 +45,7 @@ public class Personas {
     }
 
     public List<String> getNombres_mujer() {
-        return nombres_mujer;
+        return this.nombres_mujer;
     }
 
     public void setNombres_mujer(List<String> nombres_mujer) {
@@ -53,11 +53,55 @@ public class Personas {
     }
 
     public List<String> getApellidos() {
-        return apellidos;
+        return this.apellidos;
     }
 
     public void setApellidos(List<String> apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public Direcciones getDirecciones() {
+        return this.direcciones;
+    }
+
+    public void setDirecciones(Direcciones direcciones) {
+        this.direcciones = direcciones;
+    }
+
+    public Personas personas(List<Persona> personas) {
+        setPersonas(personas);
+        return this;
+    }
+
+    public Personas nombres_hombre(List<String> nombres_hombre) {
+        setNombres_hombre(nombres_hombre);
+        return this;
+    }
+
+    public Personas nombres_mujer(List<String> nombres_mujer) {
+        setNombres_mujer(nombres_mujer);
+        return this;
+    }
+
+    public Personas apellidos(List<String> apellidos) {
+        setApellidos(apellidos);
+        return this;
+    }
+
+    public Personas direcciones(Direcciones direcciones) {
+        setDirecciones(direcciones);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " personas='" + getPersonas() + "'" +
+                ", nombres_hombre='" + getNombres_hombre() + "'" +
+                ", nombres_mujer='" + getNombres_mujer() + "'" +
+                ", apellidos='" + getApellidos() + "'" +
+                ", direcciones='" + getDirecciones() + "'" +
+                "}";
     }
 
     public void load(
@@ -73,7 +117,9 @@ public class Personas {
                     Paths.get(nombre_mujer_filename), StandardCharsets.UTF_8);
             this.apellidos = Files.readAllLines(
                     Paths.get(apellidos_filename), StandardCharsets.UTF_8);
-
+            this.direcciones = new Direcciones();
+            this.direcciones.load(localidades_filename, calles_filename);
+            this.direcciones.generate(1000);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -87,6 +133,7 @@ public class Personas {
                 this.personas != null) {
 
             for (int i = 0; i < cuantas; i++) {
+
                 // generamos un DNI con su letra aleatoria
                 int dni = ThreadLocalRandom.current().
                         nextInt(20000000, 100000000);
@@ -96,13 +143,40 @@ public class Personas {
                 String nif = Integer.toString(dni) + letra;
 
                 // generamos una fecha aleatoria
-                Random rand = new Random();
-                LocalDate fdn = LocalDate.of(
-                        2023 - rand.nextInt(120),
-                        rand.nextInt(12) + 1,
-                        rand.nextInt(28) + 1);
+                // con el número de días que hay entre el 1/1/1900 y hoy
+                long diaMin = LocalDate.of(1900, 1, 1).toEpochDay();
+                long diaMax = LocalDate.of(2023, 10, 17).toEpochDay();
+                LocalDate fdn = LocalDate.ofEpochDay(
+                        ThreadLocalRandom.current().nextLong(diaMin, diaMax));
+
+                String nombre;
+                if (ThreadLocalRandom.current().nextInt(2) == 0) {
+                    nombre = this.nombres_mujer.get(
+                            ThreadLocalRandom.current().nextInt(
+                                    this.nombres_mujer.size()));
+                } else {
+                    nombre = this.nombres_hombre.get(
+                            ThreadLocalRandom.current().nextInt(
+                                    this.nombres_hombre.size()));
+                }
+                String apellido1 = this.apellidos.get(
+                        ThreadLocalRandom.current().nextInt(apellidos.size()));
+                String apellido2 = this.apellidos.get(
+                        ThreadLocalRandom.current().nextInt(apellidos.size()));
+                Direccion dir = direcciones.getDirecciones().get(
+                        ThreadLocalRandom.current().nextInt(
+                                direcciones.getDirecciones().size())
+                );
+
+                List<Direccion> dirs = new ArrayList<>();
+                dirs.add(dir);
+                Persona p = new Persona(nombre, apellido1, apellido2,
+                        nif, fdn, dirs);
+
+                // añado la persona creada a la lista de personas
+                this.personas.add(p);
             }
-        } else {
         }
+
     }
 }
