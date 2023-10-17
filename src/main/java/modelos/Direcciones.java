@@ -1,15 +1,21 @@
 package modelos;
 
+import jakarta.xml.bind.annotation.*;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Direcciones {
-
+    @XmlElement(name = "direccion")
     private List<Direccion> direcciones;
+    @XmlTransient
     private Localidades localidades;
+    @XmlTransient
     private List<String> calles;
 
     public Direcciones() {

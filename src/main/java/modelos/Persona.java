@@ -1,14 +1,22 @@
 package modelos;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.time.LocalDate;
 import java.util.List;
 
+@XmlRootElement(name = "persona")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Persona {
     private String nombre;
     private String apellido1;
     private String apellido2;
     private String dni;
     private LocalDate fdn;
+    @XmlTransient
     private List<Direccion> direcciones;
 
     public Persona() {
@@ -111,3 +119,6 @@ public class Persona {
     }
 
 }
+
+
+

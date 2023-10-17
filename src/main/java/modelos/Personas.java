@@ -1,5 +1,7 @@
 package modelos;
 
+import jakarta.xml.bind.annotation.*;
+
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,11 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+@XmlRootElement(name = "lista_personas")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Personas {
+    @XmlElement(name = "persona")
     private List<Persona> personas;
+    @XmlTransient
     private List<String> nombres_hombre;
+    @XmlTransient
     private List<String> nombres_mujer;
+    @XmlTransient
     private List<String> apellidos;
+    @XmlTransient
     private Direcciones direcciones;
 
 

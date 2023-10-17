@@ -1,8 +1,16 @@
 package modelos;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Direccion {
     private String calle;
     private int numero;
+    @XmlElement
     private Localidad localidad;
 
     public Direccion() {
