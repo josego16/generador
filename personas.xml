@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <lista_personas>
     <persona>
-        <nombre>SONIA</nombre>
+        <nombre>JOSEP</nombre>
+        <apellido1>MOYA</apellido1>
+        <apellido2>AGUILAR</apellido2>
+        <dni>21529220R</dni>
+        <fdn/>
+    </persona>
+    <persona>
+        <nombre>JAIME</nombre>
+        <apellido1>GARRIDO</apellido1>
+        <apellido2>HERNANDEZ</apellido2>
+        <dni>65258962G</dni>
+        <fdn/>
+    </persona>
+    <persona>
+        <nombre>JAIME</nombre>
+        <apellido1>ORTEGA</apellido1>
+        <apellido2>HERNANDEZ</apellido2>
+        <dni>61323384W</dni>
+        <fdn/>
+    </persona>
+    <persona>
+        <nombre>SANDRA</nombre>
         <apellido1>PEÑA</apellido1>
-        <apellido2>MARQUEZ</apellido2>
-        <dni>48418170L</dni>
+        <apellido2>SANTANA</apellido2>
+        <dni>99909646S</dni>
         <fdn/>
     </persona>
     <persona>
-        <nombre>JORGE</nombre>
-        <apellido1>NAVARRO</apellido1>
-        <apellido2>DIEZ</apellido2>
-        <dni>85683040J</dni>
-        <fdn/>
-    </persona>
-    <persona>
-        <nombre>ANTONIA</nombre>
-        <apellido1>PASCUAL</apellido1>
-        <apellido2>MOYA</apellido2>
-        <dni>89054713R</dni>
-        <fdn/>
-    </persona>
-    <persona>
-        <nombre>VERONICA</nombre>
-        <apellido1>ROMERO</apellido1>
-        <apellido2>ARIAS</apellido2>
-        <dni>39075479C</dni>
-        <fdn/>
-    </persona>
-    <persona>
-        <nombre>PATRICIA</nombre>
-        <apellido1>ALVAREZ</apellido1>
-        <apellido2>DOMINGUEZ</apellido2>
-        <dni>60360967C</dni>
-        <fdn/>
-    </persona>
-    <persona>
-        <nombre>CRISTINA</nombre>
-        <apellido1>BRAVO</apellido1>
-        <apellido2>MOYA</apellido2>
-        <dni>36863048M</dni>
-        <fdn/>
-    </persona>
-    <persona>
-        <nombre>JESUS</nombre>
-        <apellido1>DELGADO</apellido1>
-        <apellido2>PASTOR</apellido2>
-        <dni>91679868M</dni>
-        <fdn/>
-    </persona>
-    <persona>
-        <nombre>ALFREDO</nombre>
+        <nombre>MARIA NIEVES</nombre>
         <apellido1>HERNANDEZ</apellido1>
-        <apellido2>MOYA</apellido2>
-        <dni>80498878M</dni>
+        <apellido2>FUENTES</apellido2>
+        <dni>50106551Q</dni>
         <fdn/>
     </persona>
     <persona>
-        <nombre>MONICA</nombre>
+        <nombre>CELIA</nombre>
+        <apellido1>SAEZ</apellido1>
+        <apellido2>ALONSO</apellido2>
+        <dni>29022419F</dni>
+        <fdn/>
+    </persona>
+    <persona>
+        <nombre>ROBERTO</nombre>
+        <apellido1>DIAZ</apellido1>
+        <apellido2>SERRANO</apellido2>
+        <dni>94812365V</dni>
+        <fdn/>
+    </persona>
+    <persona>
+        <nombre>ROBERTO</nombre>
+        <apellido1>CORTES</apellido1>
+        <apellido2>DIEZ</apellido2>
+        <dni>72865961Y</dni>
+        <fdn/>
+    </persona>
+    <persona>
+        <nombre>MARIA CRISTINA</nombre>
         <apellido1>AGUILAR</apellido1>
-        <apellido2>LORENZO</apellido2>
-        <dni>53973098X</dni>
+        <apellido2>LEON</apellido2>
+        <dni>78127534F</dni>
         <fdn/>
     </persona>
     <persona>
-        <nombre>ROSARIO</nombre>
-        <apellido1>PASTOR</apellido1>
-        <apellido2>GUTIERREZ</apellido2>
-        <dni>96320314V</dni>
+        <nombre>JUAN JOSE</nombre>
+        <apellido1>SANTANA</apellido1>
+        <apellido2>GALLEGO</apellido2>
+        <dni>39227565F</dni>
         <fdn/>
     </persona>
 </lista_personas>

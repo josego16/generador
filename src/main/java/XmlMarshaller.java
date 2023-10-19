@@ -1,40 +1,50 @@
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
-import modelos.Direccion;
-import modelos.Localidad;
 import modelos.Personas;
 
 import java.io.File;
 
 public class XmlMarshaller {
     public static void main(String[] args) {
-        JAXBContext jaxb;
+        JAXBContext jaxbContext;
 
-        Localidad local = new Localidad("Jaen", 23340, "Arroyo del Ojanco");
-        Direccion dir = new Direccion("Calle travesia vinias", 15, local);
+        /*
+        Localidad localidad = new Localidad(
+            "Jaén", 23008, "Jaén");
+
+        Direccion direccion = new Direccion(
+            "Paseo de la Estacion", 44, localidad);
+
 
         try {
-            jaxb = JAXBContext.newInstance(dir.getClass());
-            Marshaller marsh = jaxb.createMarshaller();
-            marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marsh.marshal(dir, new File("direccion.xml"));
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            jaxbContext = JAXBContext.newInstance(direccion.getClass());
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(
+                Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(direccion, new File("direccion.xml"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        */
+
         Personas personas = new Personas();
-        personas.load("nombre_mujer.txt",
+        personas.load(
+                "nombre_mujer.txt",
                 "nombre_hombre.txt",
                 "apellidos.txt",
                 "codigos-postales.csv",
                 "calles.txt");
-        personas.generate(10);
+
+        personas.generate(100);
+
         try {
-            jaxb = JAXBContext.newInstance(personas.getClass());
-            Marshaller mars = jaxb.createMarshaller();
+            jaxbContext = JAXBContext.newInstance(personas.getClass());
+            Marshaller mars = jaxbContext.createMarshaller();
             mars.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             mars.marshal(personas, new File("personas.xml"));
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 }
