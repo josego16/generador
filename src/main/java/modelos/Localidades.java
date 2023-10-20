@@ -63,5 +63,8 @@ public class Localidades {
             System.out.println(e.getLocalizedMessage());
         }
     }
+
+    public void add(Localidad loc1) {
+    }
 }
 
